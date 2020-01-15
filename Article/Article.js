@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Steven is Awesome at Components!',
+    date: 'Jan 15th, 2020',
+    firstParagraph: `happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy`,
+
+    secondParagraph: `happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy`,
+
+    thirdParagraph: `happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy, happy happy joy joy`
   }
 ];
 
@@ -112,3 +121,48 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function newArticle(title, date, firstParagraph, secondParagraph,  thirdParagraph){
+
+    const article = document.createElement('div');
+    const articleTitle = document.createElement('h2');
+    const articleDate = document.createElement('p');
+    const firstParag = document.createElement('p');
+    const secondParag = document.createElement('p');
+    const thirdParag = document.createElement('p');
+    const expandBtn = document.createElement('span');
+
+    article.classList.add('article');
+    articleDate.classList.add('date');
+    expandBtn.classList.add('expandButton');
+
+    article.append(articleTitle);
+    article.append(articleDate);
+    article.append(firstParag);
+    article.append(secondParag);
+    article.append(thirdParag);
+    article.append(expandBtn);
+
+    articleTitle.textContent = title;
+    articleDate.textContent = date;
+    firstParag.textContent = firstParagraph;
+    secondParag.textContent = secondParagraph;
+    thirdParag.textContent = thirdParagraph;
+    expandBtn.textContent = 'expand';
+
+    expandBtn.addEventListener('click', () => {
+      article.classList.toggle('article-open');
+    })
+
+
+    return article;
+}
+
+const articles = document.querySelector('.articles');
+
+data.map( info => {
+  articles.append(newArticle(info.title, info.date, info.firstParagraph, info.secondParagraph, info.thirdParagraph));
+})
+
+
+
