@@ -163,6 +163,3 @@ const articles = document.querySelector('.articles');
 data.map( info => {
   articles.append(newArticle(info.title, info.date, info.firstParagraph, info.secondParagraph, info.thirdParagraph));
 })
-
-
-
